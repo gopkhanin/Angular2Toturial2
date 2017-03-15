@@ -1,0 +1,520 @@
+<form #AddForm="ngForm" *ngIf="active" (ngSubmit)="onSubmit()">
+<div class="row solid">
+    <div class="col-md-12">
+    <!-- -------------------------- -->
+            <!-- ข้อมูลลูกค้า -->
+    <!-- -------------------------- -->
+        <div class="row">
+            <div class="col-md-12" style="color:white;background:gray;">
+                <label>&nbsp;ข้อมูลลูกค้า</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 form-inline" style="text-align: left">
+                <br/><br/>
+                <div class="col-md-1"><label>ชื่อ</label></div>
+                <div class="col-md-3">
+                    <input type="text" id="Nameth" class="form-control"
+                            required minlength="4" maxlength="64"
+                            name="Nameth" [(ngModel)]="User.Nameth"
+                            #Nameth="ngModel" (keypress)="CheckTh($event)"
+                    >
+                </div>
+                <!-- Alert -->
+                <div class="col-md-2">
+                    <div *ngIf="Nameth.errors && (Nameth.dirty || Nameth.touched)" class="alert alert-danger">
+                        <div [hidden]="!Nameth.errors.required">
+                            โปรดระบุ
+                        </div>
+                        <div [hidden]="!Nameth.errors.minlength">
+                            กรุณากรอกอักษรภาษาไทยอย่างน้อย 4 ตัวอักษร
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-1"><label>นามสกุล</label></div>
+                <div class="col-md-3">
+                    <input type="text" id="Surnameth" class="form-control"
+                            required minlength="4" maxlength="64"
+                            name="Surnameth" [(ngModel)]="User.Surnameth"
+                            #Surnameth="ngModel"  (keypress)="CheckTh($event)">
+                </div>
+                <!-- Alert -->
+                <div class="col-md-2">
+                    <div *ngIf="Surnameth.errors && (Surnameth.dirty || Surnameth.touched)" class="alert alert-danger">
+                        <div [hidden]="!Surnameth.errors.required">
+                            โปรดระบุ
+                        </div>
+                        <div [hidden]="!Surnameth.errors.minlength">
+                            กรุณากรอกอักษรภาษาไทยอย่างน้อย 4 ตัวอักษร
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- End Class md-12 -->
+        </div><!-- End row -->
+
+        <div class="row">
+            <div class="col-md-12 form-inline" style="text-align: left">
+                <br/><br/>
+                    <div class="col-md-1"><label>Name </label></div>
+                    <div class="col-md-3">
+                        <input type="text" id="Nameeng" class="form-control"
+                               required minlength="4" maxlength="64"
+                               name="Nameeng" [(ngModel)]="User.Nameeng"
+                               #Nameeng="ngModel" (keypress)="CheckEng($event)" >
+                    </div>
+                <!-- Alert -->
+                <div class="col-md-2">
+                    <div *ngIf="Nameeng.errors && (Nameeng.dirty || Nameeng.touched)" class="alert alert-danger">
+                        <div [hidden]="!Nameeng.errors.required">
+                            โปรดระบุ
+                        </div>
+                        <div [hidden]="!Nameeng.errors.minlength">
+                            กรุณากรอกอักษรภาษาอังกฤษอย่างน้อย 4 ตัวอักษร
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-1"><label>Surname</label></div>
+                <div class="col-md-3">
+                    <input type="text" id="Surnameeng" class="form-control"
+                           required minlength="4" maxlength="64"
+                           name="Surnameeng" [(ngModel)]="User.Surnameeng"
+                           #Surnameeng="ngModel" (keypress)="CheckEng($event)" >
+                </div>
+                <!-- Alert -->
+                <div class="col-md-2">
+                    <div *ngIf="Surnameeng.errors && (Surnameeng.dirty || Surnameeng.touched)" class="alert alert-danger">
+                        <div [hidden]="!Surnameeng.errors.required">
+                            โปรดระบุ
+                        </div>
+                        <div [hidden]="!Surnameeng.errors.minlength">
+                            กรุณากรอกอักษรภาษาไทยอย่างน้อย 4 ตัวอักษร
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- End Class md-12 -->
+        </div><!-- End row -->
+
+        <div class="row">
+            <div class="col-md-12 form-inline" style="text-align: left">
+                <br/><br/>
+                <div class="col-md-2"><label>รหัสบัตรประชาชน&nbsp;</label></div>
+                <div class="col-md-3">
+                    <input class="form-control" type="text" maxlength="13"
+                           required minlength="13" maxlength="13"
+                           name="id13" [(ngModel)]="User.id13"
+                           #id13="ngModel" (keypress)="CheckNum($event)"
+                    >
+                </div>
+                <!-- Alert -->
+                <div class="col-md-6">
+                    <div *ngIf="id13.errors && (id13.dirty || id13.touched)" class="alert alert-danger">
+                        <div [hidden]="!id13.errors.required">
+                            โปรดระบุ
+                        </div>
+                        <div [hidden]="!id13.errors.minlength">
+                            กรุณากรอกรหัสบัตรประชาชนให้ครบ 13 หลัก
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- End Class md-12 -->
+        </div><!-- End row -->
+
+        <div class="row">
+            <div class="col-md-12 form-inline"  ng-init="User.nationality=ไทย">
+                <div class="col-md-1">
+                    <label>สัญชาติ&nbsp;</label>
+                </div>
+                <div class="col-md-1">
+                    <label>
+                        <input type="radio" name="natonality" value="0" [(ngModel)]="User.nationality_txt">&nbsp;ไทย &nbsp;
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        <input type="radio" name="natonality" value="1" [(ngModel)]="User.nationality_txt">
+                        &nbsp;สัญชาติอื่น/หากมากกว่า 1 สัญชาติ โปรดระบุทุกสัญชาติที่ลูกค้ามี&nbsp;&nbsp;
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" maxlength="64" name="nationality_txt"
+                           [(ngModel)]="User.nationality_temp" *ngIf="User.nationality_txt == '1'">
+                </div>
+            </div><!-- End Class md-12 -->
+        </div><!-- End row -->
+
+                <!--<br/><br/>-->
+            <!--</div>-->
+        <div class="row">
+            <div class="col-md-12 form-inline">
+                <label class="col-md-3">สถานภาพทางการสมรสตามกฏหมาย &nbsp;</label>
+                <input type="radio" [(ngModel)]="User.status" name="status" value="0"/>&nbsp;โสด&nbsp;
+                <input type="radio" [(ngModel)]="User.status" name="status" value="1"/>&nbsp;สมรส&nbsp;
+                <input type="radio" [(ngModel)]="User.status" name="status" value="3"/>&nbsp;หม้าย&nbsp;
+                <input type="radio" [(ngModel)]="User.status" name="status" value="4"/>&nbsp;หย่า&nbsp;
+            </div>
+        </div>
+
+        <div class="row">
+            <div *ngIf="User.status == 1">
+                <div class="col-md-12 form-inline">
+                    <label class="col-md-3">ข้อมูลคู่สมรส</label>
+
+                    <label class="col-md-1">ชื่อ&nbsp;</label>
+                    <input type="text" class="form-control col-md-3" name="Namemarryth"
+                           maxlength="64" [(ngModel)]="User.Namemarryth" (keypress)="CheckTh($event)">
+
+                    <label class="col-md-2">นามสกุล &nbsp;</label>
+                    <input type="text" class="form-control col-md-3" name="Surnamemarryth"
+                           maxlength="64" [(ngModel)]="User.Surnamemarryth" (keypress)="CheckTh($event)">
+                </div>
+
+                <div class="col-md-12 form-inline">
+                    <label class="col-md-3"></label>
+                    <label class="col-md-1">Name &nbsp;</label>
+                    <input type="text" class="form-control col-md-3" name="Namemarryeng"
+                           maxlength="64" [(ngModel)]="User.Namemarryeng" (keypress)="CheckEng($event)">
+
+                    <label class="col-md-2">Surname &nbsp;</label>
+                    <input type="text" class="form-control col-md-3" name="Surnamemarryeng"
+                           maxlength="64" [(ngModel)]="User.Surnamemarryeng" (keypress)="CheckEng($event)">
+                </div>
+                <br/>
+            </div>
+        </div>
+        <!-- -------------------------- -->
+             <!-- ข้อมูลทางการเงิน -->
+        <!-- -------------------------- -->
+
+        <div class="row">
+            <!----------------------------------------------------------->
+            <div class="col-md-12" style="color:white;background:gray;">
+                <label>&nbsp;ข้อมูลทางการเงิน</label>
+            </div>
+            <!----------------------------------------------------------->
+            <div class="col-md-12 form-inline">
+                <label class="col-md-2" style="text-align: left">รายได้ต่อปี&nbsp;</label>
+                <input type="radio" name="money" value="0" [(ngModel)]="User.Money"/>&nbsp;ต่ำกว่า 5 แสนบาท &nbsp;&nbsp;
+                <input type="radio" name="money" value="1" [(ngModel)]="User.Money"/>&nbsp;ตั้งแต่ 5 แสนบาท แต่ไม่ถึง 1 ล้านบาท &nbsp;&nbsp;
+                <input type="radio" name="money" value="2" [(ngModel)]="User.Money"/>&nbsp;ตั้งแต่ 1 ล้าน แต่ไม่ถึง 4 ล้านบาท &nbsp;&nbsp;
+                <input type="radio" name="money" value="3" [(ngModel)]="User.Money"/>&nbsp;ตั้งแต่ 4 ล้านบาทขึ้นไป &nbsp;&nbsp;
+            </div>
+
+            <div class="col-md-12 form-inline">
+                <label class="col-md-2">มูลค่าทรัพย์สินส่วนตัว&nbsp;</label>
+                <input type="radio" name="moneycustomer" value="0" [(ngModel)]="User.Moneycustomer"/>&nbsp;ต่ำกว่า 2 ล้านบาท &nbsp;&nbsp;
+                <input type="radio" name="moneycustomer" value="1" [(ngModel)]="User.Moneycustomer"/>&nbsp;ตั้งแต่ 2 ล้าน แต่ไม่ถึง 5 ล้านบาท &nbsp;&nbsp;
+                <input type="radio" name="moneycustomer" value="2" [(ngModel)]="User.Moneycustomer"/>&nbsp;ตั้งแต่ 5 ล้าน แต่ไม่ถึง 10 ล้านบาท &nbsp;&nbsp;
+            </div>
+
+            <div class="col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input type="radio" name="moneycustomer" value="3" [(ngModel)]="User.Moneycustomer"/>&nbsp;ตั้งแต่ 10 ล้าน แต่ไม่ถึง 30 ล้านบาท &nbsp;&nbsp;
+                <input type="radio" name="moneycustomer" value="4" [(ngModel)]="User.Moneycustomer"/>&nbsp;ตั้งแต่ 30 ล้าน แต่ไม่ถึง 50 ล้านบาท &nbsp;&nbsp;
+                <input type="radio" name="moneycustomer" value="5" [(ngModel)]="User.Moneycustomer"/>&nbsp;ตั้งแต่ 50 ล้านบาทขึ้นไป &nbsp;&nbsp;
+            </div>
+        </div><!-- End row -->
+
+<!-- -------------------------- -->
+    <!-- ข้อมูลทางการศึกษา -->
+<!-- -------------------------- -->
+
+        <div class="row">
+            <!----------------------------------------------------------->
+            <div class="col-md-12" style="color:white;background:gray;">
+                <label>&nbsp;ข้อมูลทางการศึกษา</label>
+            </div>
+            <!----------------------------------------------------------->
+            <div class="col-md-12 form-inline">
+                <label class="col-md-2">การศึกษาสูงสุด</label>
+                <input type="radio" name="study" value="0" [(ngModel)]="User.Study"/>&nbsp;ต่ำกว่าปริญญาตรี &nbsp;&nbsp;
+                <input type="radio" name="study" value="1" [(ngModel)]="User.Study"/>&nbsp;ปริญญาตรี &nbsp;&nbsp;
+                <input type="radio" name="study" value="2" [(ngModel)]="User.Study"/>&nbsp;สูงกว่าปริญญาตรี &nbsp;&nbsp;
+            </div>
+            <br/><br/>
+            <div class="col-md-12 form-inline">
+                <label class="col-md-2">อาชีพ</label>
+                <input type="radio" name="job" value="0" [(ngModel)]="User.Job"/>&nbsp;พนักงาน/ผู้บริหารบริษัทเอกชน &nbsp;&nbsp;
+                <input type="radio" name="job" value="1" [(ngModel)]="User.Job"/>&nbsp;เจ้าของกิจการ &nbsp;&nbsp;
+                <input type="radio" name="job" value="2" [(ngModel)]="User.Job"/>&nbsp;ข้าราชการ/พนักงานรัฐวิสาหกิจ &nbsp;&nbsp;
+                <input type="radio" name="job" value="3" [(ngModel)]="User.Job"/>&nbsp;นิสิต/นักศึกษา &nbsp;&nbsp;
+            </div>
+
+            <div class="col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input type="radio" name="job" value="4" [(ngModel)]="User.Job"/>&nbsp;พ่อบ้าน/แม่บ้าน/ไม่ได้ทำงาน &nbsp;&nbsp;
+                <input type="radio" name="job" value="5" [(ngModel)]="User.Job"/>&nbsp;เกษียณอายุ &nbsp;&nbsp;
+                <input type="radio" name="job" value="6" [(ngModel)]="User.Job"/>&nbsp;อื่นๆ (โปรดระบุ) &nbsp;&nbsp;
+                <input class="form-control" type="text" name="job" *ngIf="User.Job == 6" [(ngModel)]="User.Jobtxt"/>
+            </div>
+            <br/><br/>
+
+            <div class="col-md-12 form-inline">
+                <label class="col-md-2">ชื่อสถานที่ทำงาน</label>
+                <input type="text" id="JobName" class="form-control col-md-3"
+                        minlength="1" maxlength="64" name="JobName" required
+                       [(ngModel)]="User.JobName" #JobName="ngModel"
+                />
+                <!-- Alert -->
+                <div class="col-md-2">
+                    <div *ngIf="JobName.errors && (JobName.dirty || JobName.touched)" class="alert alert-danger">
+                        <div [hidden]="!JobName.errors.required">
+                            โปรดระบุ
+                        </div>
+                    </div>
+                </div>
+                <label class="col-md-1">ตำแหน่ง</label>
+                <input type="text" class="form-control col-md-2"
+                       minlength="1" maxlength="64" name="JobRule" required
+                       [(ngModel)]="User.JobRule"  #JobRule="ngModel"
+                />
+                <!-- Alert -->
+                <div class="col-md-2">
+                    <div *ngIf="JobRule.errors && (JobRule.dirty || JobRule.touched)" class="alert alert-danger">
+                        <div [hidden]="!JobRule.errors.required">
+                            โปรดระบุ
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 form-inline">
+                <br /><br />
+                <label class="col-md-3">ประเภทธุรกิจของสถานที่ทำงาน</label>
+            </div>
+
+            <div class="row col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="0" />
+                <label>&nbsp;หน่วยงานราชการ/รัฐวิสาหกิจ</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="1" />
+                <label style="text-align: left">&nbsp;สถาบันการศึกษา</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio"  name="jobtype" [(ngModel)]="User.JobType" value="2" />
+                <label style="text-align: left">&nbsp;การเงิน/การธนานคาร/ประกันภัย</label>&nbsp;&nbsp;
+            </div>
+
+            <div class="row col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="3"  />
+                <label style="text-align: left">&nbsp;วิศวกรรม/เทคโนโลยี/ยานยนต์</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="4" />
+                <label style="text-align: left">&nbsp;พลังงาน/สาธารณูปโภค</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="5" />
+                <label style="text-align: left">&nbsp;ก่อสร้าง/อสังหาริมทรัพย์</label>&nbsp;&nbsp;
+            </div>
+
+            <div class="row col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="6"  />
+                <label style="text-align: left">&nbsp;ค้าส่ง/ค้าปลีก</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="7" />
+                <label style="text-align: left">&nbsp;ขนส่ง/บรรจุภัณฑ์</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="8" />
+                <label style="text-align: left">&nbsp;สื่อ/สิ่งพิมพ์/บันเทิง</label>&nbsp;&nbsp;
+            </div>
+
+            <div class="row col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="9" />
+                <label style="text-align: left">&nbsp;บริการด้านความงาม/สุขภาพ</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="10" />
+                <label style="text-align: left">&nbsp;บริการทางการแพทย์</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="11" />
+                <label style="text-align: left">&nbsp;ศาสนสถาน/องค์กรที่ไม่แสดงหากำไร/การกุศล</label>&nbsp;&nbsp;
+            </div>
+
+            <div class="row col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="12" />
+                <label style="text-align: left" >&nbsp;สำนักกฏหมายสำนักกฏหมาย</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="13" />
+                <label style="text-align: left">&nbsp;สิ่งทอ/เสื้อผ้า/เครื่องแต่งกาย</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="14" />
+                <label style="text-align: left">&nbsp;ธุรกิจแลกเปลี่ยนเงินตรา/โอนเงินระหว่างประเทศ</label>&nbsp;&nbsp;
+            </div>
+
+            <div class="row col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="15์"  />
+                <label style="text-align: left" >&nbsp;บริการด้านการท่องเที่ยว/บริษัททัวร์</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="16" />
+                <label style="text-align: left">&nbsp;ค้าของเก่า/วัตถุโบราณ</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="17" />
+                <label style="text-align: left">&nbsp;ค้าทอง/โลหะมีค่า/อัญมณี/เครื่องประดับมีค่า</label>&nbsp;&nbsp;
+            </div>
+
+            <div class="row col-md-12 form-inline">
+                <label class="col-md-2"></label>
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="18"/>
+                <label style="text-align: left" >&nbsp;บริการด้านการจัดหางาน</label>&nbsp;&nbsp;
+
+                <input style="text-align: left" type="radio" name="jobtype" [(ngModel)]="User.JobType" value="19"/>
+                <label style="text-align: left">&nbsp;อื่นๆ (โปรดระบุ)</label>&nbsp;&nbsp;
+
+                <input class="form-control" type="text" name="jobtype" [(ngModel)]="User.JobTypetxt" *ngIf="User.JobType == '19'" >
+            </div>
+        </div><!-- End row -->
+ <!-- การเปิดเผยข้อมูลเพิ่มเติมตามที่กฏหมายกำหนด -->
+         <div class="row">
+                <div class="col-md-12" style="color:white;background:gray;">
+                    <label>&nbsp;ข้อมูลทางการเงิน</label>
+                </div>
+                </div>
+            <div class="row">
+                <div class="col-md-2 form-inline">
+                    <label > 1) แหล่งที่มาของรายได้หลักมาจาก</label>
+                </div>
+                <div class="col-md-2 form-inline">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureOne" name="disclosureOne" value="1"/>
+                    <label style="text-align: left" >&nbsp;เงินเดือน</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2 form-inline">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureOne" name="disclosureOne" value="2"/>
+                    <label style="text-align: left" >&nbsp;การประกอบธุรกิจ</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2 form-inline">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureOne" name="disclosureOne" value="3"/>
+                    <label style="text-align: left" >&nbsp;การลงทุน</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-4 form-inline">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureOne" name="disclosureOne" value="4"/>
+                    <label style="text-align: left">&nbsp;อื่นๆ (โปรดระบุ)</label>&nbsp;&nbsp;
+                    <input class="form-control" type="text" [(ngModel)]="User.disclosureOneTxt"
+                           name="disclosureOneTxt" *ngIf="User.disclosureOne == 4" maxlength="64"/>
+                </div>
+            </div>
+            <div class="row">
+                <br /><br />
+                <div class="col-md-4 form-inline">
+                    <label> 2) ประเทศที่มาของรายได้หลักมาจาก</label>
+                </div>
+
+                <div class="col-md-2 form-inline">
+                    <input type="radio" [(ngModel)]="User.disclosureTwo" name="disclosureTwo" value="0"/>
+                    <label>&nbsp;ประเทศไทย</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2 form-inline">
+                    <input type="radio" [(ngModel)]="User.disclosureTwo" name="disclosureTwo" value="1" />
+                    <label>ประเทศอื่น(โปรดระบุ)</label>
+                </div>
+                <div class="col-md-4 form-inline">
+                    <input class="form-control" type="text" [(ngModel)]="User.disclosureTwoTxt"
+                           name="disclosureTwoTxt" *ngIf="User.disclosureTwo == 1" maxlength="64"/>
+                </div>
+            </div>
+            <div class="row">
+                <br /><br />
+                <div class="col-md-6">
+                    <label>
+                        3) ท่านอยู่ระหว่างการถูกยับยั้งการทำธุรกรรม ยึดหรืออายัดทรัพย์สิน หรือเป็นผู้ที่ศาลมีคำสั่งให้ทรัพย์สินตก เป็นของแผ่นดินตามกฏหมายว่าด้วยการป้องกันและปราบปรามการฟอกเงินหรือไม่
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureThree" name="disclosureThree" value="0"/>
+                    <label style="text-align: left" >&nbsp;ไม่ใช่</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureThree" name="disclosureThree" value="1"/>
+                    <label style="text-align: left">&nbsp;ใช่ โปรดระบุ</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" type="text" [(ngModel)]="User.disclosureThreeTxt"
+                           name="disclosureThreeTxt" *ngIf="User.disclosureThree ==1" maxlength="64" />
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-6">
+                    4) ท่านเป็นหรือเคยเป็นบุคคลที่กระทำความผิดเกี่ยวกับความผิดฐานฟอกเงิน ความผิดมูลฐาน ตามกฏหมายฟอกเงิน หรือความผิดเกี่ยวกับการก่อการร้ายและสนับสนุสการเงินแก่การก่อการร้ายหรือไม่
+                </label>
+                <div class="col-md-2">
+                    <input style="text-align: left" type="radio"
+                           [(ngModel)]="User.disclosureFour" name="disclosureFour" value="0"/>
+                    <label style="text-align: left" >&nbsp;ไม่เคย</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2">
+                    <input type="radio" [(ngModel)]="User.disclosureFour" name="disclosureFour" value="1"/>
+                    <label>&nbsp;เคย โปรดระบุ</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" type="text" [(ngModel)]="User.disclosureFourTxt"
+                           name="disclosureFourTxt" *ngIf="User.disclosureFour == 1" maxlength="64"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-md-6">
+                    5) ท่านเป็นบุคคลที่มีสถานภาพทางการเมืองไทยหรือต่างประเทศ ใช่หรือไม่
+                </label>
+                <div class="col-md-2">
+                    <input type="radio" [(ngModel)]="User.disclosureFive" name="disclosureFive" value="0" />
+                    <label>&nbsp;ไม่ใช่</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2">
+                    <input type="radio" [(ngModel)]="User.disclosureFive" name="disclosureFive" value="1" />
+                    <label>&nbsp;ใช่ โปรดระบุ</label>&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" type="text" [(ngModel)]="User.disclosureFiveTxt"
+                           name="disclosureFiveTxt" *ngIf="User.disclosureFive == 1" maxlength="64"/>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="col-md-6">
+                    6) บุคคลที่ได้รับประโยชน์จากการทำธุรกรรมที่แท้จริง
+                </label>
+                <div class="col-md-2">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureSix" name="disclosureSix" value="0"/>
+                    <label style="text-align: left" >&nbsp;ลูกค้า</label>
+                </div>
+                <div class="col-md-2">
+                    <input style="text-align: left" type="radio" [(ngModel)]="User.disclosureSix" name="disclosureSix" value="1"/>
+                    <label style="text-align: left">&nbsp;อื่นๆ โปรดระบุ</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" type="text"
+                           [(ngModel)]="User.disclosureSixTxt" name="disclosureSixTxt" *ngIf="User.disclosureSix==1" maxlength="64" />
+                </div>
+            </div>
+            <br />
+    </div><!-- End md 12 -->
+</div><!-- End row -->
+<br/>
+<!-- Button -->
+<div class="row">
+    <div class="col-md-12">
+        <a routerLink="/view"><button type="submit" class="btn btn-default"
+              [disabled]="!AddForm.form.valid" (click)="Change()"
+
+        >Submit</button></a>
+       <a routerLink=""><button class="btn btn-default"> back</button></a>
+    </div>
+</div>
+</form>
+<br/><br/>
+
+
+
+<style media="screen">
+    div.solid {
+        border-style: solid;
+        border-color: #000000 #000000;
+    }
+</style>
