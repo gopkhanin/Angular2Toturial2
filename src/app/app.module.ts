@@ -9,14 +9,16 @@ import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { HomeComponent } from './home/home.component';
 
-import { AddService } from './add/add.service';
+import { AddService } from './Service/add.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddComponent,
     ViewComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -10,21 +10,21 @@
 
       <div class="col-md-12">
           <div class="row">
-            <div class="col-md-4">ชื่อ : {{ S_User?.Nameth ? S_User?.Nameth : '-' }}</div>
-            <div class="col-md-4">นามสกุล : {{ S_User.Surnameth ? S_User.Surnameth : '-' }}</div>
+            <div class="col-md-4">ชื่อ : {{ User?.Nameth ? User?.Nameth : '-' }}</div>
+            <div class="col-md-4">นามสกุล : {{ User?.Surnameth ? User?.Surnameth : '-' }}</div>
             <div class="col-md-4">("ลูกค้า" หรือ "ผู้ขอใช้บริการ")</div>
           </div>
       </div>
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-4">Name : {{ S_User?.Nameeng ? S_User?.Nameeng : '-' }}</div>
-          <div class="col-md-4">Surname : {{ S_User?.Surnameeng ? S_User?.Surnameeng : '-' }}</div>
+          <div class="col-md-4">Name : {{ User?.Nameeng ? User?.Nameeng : '-' }}</div>
+          <div class="col-md-4">Surname : {{ User?.Surnameeng ? User?.Surnameeng : '-' }}</div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-12">รหัสบัตรประชาชน : {{  S_User?.id13 ? S_User?.id13 : '-' }}</div>
+          <div class="col-md-12">รหัสบัตรประชาชน : {{  User?.id13 ? User?.id13 : '-' }}</div>
         </div>
       </div>
 
@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-md-3">สัญชาติ :
             <label>
-              {{ S_User?.nationality_txt =='0' ? S_User.getNationality() : S_User?.nationality_temp }}
+              {{ User?.nationality_txt =='0' ? User?.getNationality() : User?.nationality_temp }}
             </label>
           </div>
         </div>
@@ -40,23 +40,23 @@
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-12">สถานภาพการสมรสตามกฏหมาย : {{ S_User.getStatus() ? S_User.getStatus() : '-' }}</div>
+          <div class="col-md-12">สถานภาพการสมรสตามกฏหมาย : {{ User?.getStatus() ? User?.getStatus() : '-' }}</div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-2 form-inline">ข้อมูลคู่สมรส</div>
-          <div class="col-md-4 form-inline">ชื่อ : {{ S_User?.Namemarryth ? S_User?.Namemarryth : '-' }}</div>
-          <div class="col-md-4 form-inline">นามสกุล : {{ S_User?.Surnamemarryth ? S_User?.Surnamemarryth : '-' }}</div>
+          <div class="col-md-4 form-inline">ชื่อ : {{ User?.Namemarryth ? User?.Namemarryth : '-' }}</div>
+          <div class="col-md-4 form-inline">นามสกุล : {{ User?.Surnamemarryth ? User?.Surnamemarryth : '-' }}</div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-2 form-inline"></div>
-          <div class="col-md-4 form-inline">Name : {{ S_User?.Namemarryeng ? S_User?.Namemarryeng : '-' }}</div>
-          <div class="col-md-4 form-inline">Surname : {{ S_User?.Surnamemarryeng ? S_User?.Surnamemarryeng : '-' }}</div>
+          <div class="col-md-4 form-inline">Name : {{ User?.Namemarryeng ? User?.Namemarryeng : '-' }}</div>
+          <div class="col-md-4 form-inline">Surname : {{ User?.Surnamemarryeng ? User?.Surnamemarryeng : '-' }}</div>
         </div>
       </div>
 
@@ -69,8 +69,8 @@
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-5">รายได้ต่อปี : {{ S_User?.getMoney() ? S_User?.getMoney() : '-' }}</div>
-          <div class="col-md-5">มูลค่าทรัพย์สินส่วนตัว : {{ S_User?.getCustomer() ? S_User?.getCustomer() : '-' }}</div>
+          <div class="col-md-5">รายได้ต่อปี : {{ User?.getMoney() ? User?.getMoney() : '-' }}</div>
+          <div class="col-md-5">มูลค่าทรัพย์สินส่วนตัว : {{ User?.getCustomer() ? User?.getCustomer() : '-' }}</div>
         </div>
       </div>
 
@@ -83,26 +83,26 @@
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-12">การศึกษาสูงสุด : {{ S_User?.getStudy() ? S_User?.getStudy() : '-' }}</div>
+          <div class="col-md-12">การศึกษาสูงสุด : {{ User?.getStudy() ? User?.getStudy() : '-' }}</div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-12">อาชีพ : {{ S_User?.getJob() ? S_User?.getJob() : S_User?.Jobtxt }}</div>
+          <div class="col-md-12">อาชีพ : {{ User?.getJob() ? User?.getJob() : User?.Jobtxt }}</div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-6">สถานที่ทำงาน : {{ S_User?.JobName ? S_User?.JobName : '-' }}</div>
-          <div class="col-md-6">ตำแหน่ง : {{ S_User?.JobRule ? S_User?.JobRule : '-' }}</div>
+          <div class="col-md-6">สถานที่ทำงาน : {{ User?.JobName ? User?.JobName : '-' }}</div>
+          <div class="col-md-6">ตำแหน่ง : {{ User?.JobRule ? User?.JobRule : '-' }}</div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-12 form-inline">ประเภทธุรกิจของสถานที่ทำงาน : {{ S_User?.getJobType() ? S_User.getJobType() : '-' }}</div>
+          <div class="col-md-12 form-inline">ประเภทธุรกิจของสถานที่ทำงาน : {{ User?.getJobType() ? User.getJobType() : '-' }}</div>
         </div>
       </div>
 
@@ -117,7 +117,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-5 form-inline">1) แหล่งที่มาของรายได้หลักมาจาก :
-            {{ S_User?.getDislosureOne() ?  S_User?.getDislosureOne() : S_User?.disclosureOneTxt }}
+            {{ User?.getDislosureOne() ?  User?.getDislosureOne() : User?.disclosureOneTxt }}
           </div>
         </div>
       </div>
@@ -125,7 +125,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-5 form-inline">2) ประเทศที่มาของรายได้หลักมาจาก :
-            {{ S_User?.disclosureTwo == '0' ? 'ประเทศไทย' : S_User?.disclosureTwoTxt }}
+            {{ User?.disclosureTwo == '0' ? 'ประเทศไทย' : User?.disclosureTwoTxt }}
           </div>
         </div>
       </div>
@@ -133,7 +133,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-8 form-inline">3) ท่านอยู่ระหว่างการถูกยับยั้งการทำธุรกรรม ยึดหรืออายัดทรัพย์สิน หรือเป็นผู้ที่ศาลมีคำสั่งให้ทรัพย์สิน ตกเป็นของแผ่นดินตามกฏหมายว่าด้วยการป้องกันและปราบปรามการฟอกเงินหรือไม่
-          : {{ S_User?.disclosureThree == '0' ? 'ไม่ใช่' : S_User?.disclosureThreeTxt }}
+          : {{ User?.disclosureThree == '0' ? 'ไม่ใช่' : User?.disclosureThreeTxt }}
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-8 form-inline">4) ท่านเป็นหรือเคยเป็นบุคคลที่กระทำความผิดเกี่ยวกับความผิดฐานฟอกเงิน ความผิดมูลฐาน ตามกฏหมายฟอกเงิน หรือความผิดเกี่ยวกับการก่อการร้ายและสนับสนุสการเงินแก่การก่อการร้ายหรือไม่
-          : {{ S_User?.disclosureFour == '0' ? 'ไม่เคย' : S_User?.disclosureFourTxt }}
+          : {{ User?.disclosureFour == '0' ? 'ไม่เคย' : User?.disclosureFourTxt }}
           </div>
         </div>
       </div>
@@ -149,7 +149,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-8 form-inline">5) ท่านเป็นบุคคลที่มีสถานภาพทางการเมืองไทยหรือต่างประเทศ ใช่หรือไม่
-            : {{ S_User?.disclosureFive == '0' ?  'ไม่ใช่' : S_User?.disclosureFiveTxt }}
+            : {{ User?.disclosureFive == '0' ?  'ไม่ใช่' : User?.disclosureFiveTxt }}
           </div>
         </div>
       </div>
@@ -157,7 +157,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-8 form-inline">6) บุคคลที่ได้รับประโยชน์จากการทำธุรกรรมที่แท้จริง
-            : {{ S_User?.disclosureSix == '0' ?  'ลูกค้า' : S_User?.disclosureSixTxt }}
+            : {{ User?.disclosureSix == '0' ?  'ลูกค้า' : User?.disclosureSixTxt }}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { Component, OnInit,NgModule } from '@angular/core';
 import { AddComponent } from "../add/add.component";
 
 //Service
-import { AddService } from '../add/add.service';
+import { AddService } from '../Service/add.service';
 
 //Model
 import { User } from '../Model/User';
@@ -18,12 +18,12 @@ import { User } from '../Model/User';
   ]
 })
 export class ViewComponent implements OnInit {
-  S_User?: User;
+  User: User;
 
   constructor(
       private Add:AddService
   ) {
-    this.S_User = this.Add.User;
+    this.User = this.Add.User;
   }
 
   ngOnInit() {

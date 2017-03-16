@@ -1,4 +1,4 @@
-import { Component,NgModule,OnInit } from '@angular/core';
+import { Component, NgModule , OnInit ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 //Component
@@ -18,13 +18,12 @@ import { User } from './Model/User';
     AddComponent,
     HomeComponent,
     RouterModule
-  ]
+  ],
+  imports: [RouterModule],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent implements OnInit {
   User:any;
-  fullPath:string;
-  myPicture:string;
-
   constructor(){}
 
   ngOnInit(){

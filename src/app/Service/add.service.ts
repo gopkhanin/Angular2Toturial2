@@ -7,7 +7,9 @@ import { User } from '../Model/User';
 export class AddService {
   User: User;
 
-  constructor() { }
+  constructor() {
+    this.User = new User();
+  }
 
   sendMessage(Value) {
     this.User = Value;
